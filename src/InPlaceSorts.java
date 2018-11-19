@@ -1,22 +1,19 @@
 public class InPlaceSorts {
 
     public static void insertionSort(int[] list1){
-        int pos = -1;
-        int j = 0;
-        int[] arr = list1.clone();
+        boolean done = false;
         for(int i = 1; i < list1.length; i++){ // For every value in the array
-            j = i - 1;
-            for(j = i - 1; j >= 0; j--){ //For every value below the given one
-                if(list1[i] < list1[j]){ // If it is lower than the given one
-                    swap(list1, i, j);; //Copy that position
+            for(int j = i; j > 0; j--){
+                if (list1[j] < list1[j - 1]) {
+                    swap(list1, j, j-1);
                 }
             }
         }
     }
 
     public static void selectionSort(double[] list1){
-        int pos = 0;
-        double min = 0;
+        int pos;
+        double min;
         for(int i = 0; i < list1.length; i++){
             pos = i;
             min = list1[i];
@@ -37,8 +34,8 @@ public class InPlaceSorts {
         while(swaps != 0){
             swaps = 0;
             for(int i = 0; i < list1.length-1; i++){
-                if(list1[i].length() > list1[i+1].length()){
-                    swap(list1, i, i+1);
+                if(list1[i].compareTo(list1[i+1]) > 0){
+                    swap(list1,i,i+1);
                     swaps++;
                 }
             }
